@@ -1,0 +1,4 @@
+<form action="{% url 'success' board_id=b_id user_id=u_id %}" method="post">
+  {% csrf_token %}
+  <input type="submit" value="Accept">
+</form>

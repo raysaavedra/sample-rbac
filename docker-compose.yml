@@ -2,10 +2,69 @@ version: "3"
 
 services:
   web:
+    build:
+      context: .
+      args:
+        SECRET_KEY: ${SECRET_KEY}
+    env_file: .env.prod
+    volumes:
+      - ./:/opt/webapp
     depends_on:
       - postgres
       - redis
+    ports:
+      - "8000:${PORT}"
+    expose:
+      - 8000
+    command: gunicorn capsl_test.wsgi:application --bind 0.0.0.0:8000
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 1337:80
+    depends_on:
+      - web
+
   postgres:
     image: postgres:12
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - ./postgres-data/postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    
   redis:
     image: redis:5
+    ports:
+      - "6378:6378"
+
+  celery:
+    build:
+      context: .
+    env_file: .env.prod
+    volumes:
+      - ./:/opt/webapp
+    links:
+      - postgres
+      - redis
+    depends_on:
+      - postgres
+      - redis
+    command: celery -A capsl_test worker -l info
+    
+  celery-beat:
+    build:
+      context: .
+    env_file: .env.prod
+    volumes:
+      - ./:/opt/webapp
+    links:
+      - postgres
+      - redis
+    depends_on:
+      - postgres
+      - redis
+    command: celery -A capsl_test beat -l info
