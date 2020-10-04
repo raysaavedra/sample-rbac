@@ -1,11 +1,11 @@
-# CAPSL Test
+# sample_rbac Test
 
 Submitted by Ray Anthony Saavedra (rayyacosaavedra@gmail.com)
 
 ### Installation
 
 1. Install [pipenv](https://pypi.org/project/pipenv/)
-2. Clone this repo and `cd river_city_saloon_16151`
+2. Clone this repo and `cd sample_rbac_test`
 3. Run `pip install --user --upgrade pipenv` to get the latest pipenv version.
 4. Run `pipenv --python 3.6`
 5. Run `pipenv install`
@@ -38,8 +38,3 @@ Submitted by Ray Anthony Saavedra (rayyacosaavedra@gmail.com)
 
 `docker ps` - get container id
 `docker exec -it <container_id> python3 manage.py createsuperuser`
-
-
-### Other Notes
-
-I might not have completed everything 

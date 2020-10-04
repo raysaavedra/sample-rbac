@@ -16,7 +16,7 @@ services:
       - "8000:${PORT}"
     expose:
       - 8000
-    command: gunicorn capsl_test.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn sample_rbac.wsgi:application --bind 0.0.0.0:8000
 
   nginx:
     build: ./nginx
@@ -53,7 +53,7 @@ services:
     depends_on:
       - postgres
       - redis
-    command: celery -A capsl_test worker -l info
+    command: celery -A sample_rbac worker -l info
     
   celery-beat:
     build:
@@ -67,4 +67,4 @@ services:
     depends_on:
       - postgres
       - redis
-    command: celery -A capsl_test beat -l info
+    command: celery -A sample_rbac beat -l info

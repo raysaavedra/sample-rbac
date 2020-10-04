@@ -3,9 +3,9 @@ import os
 from celery import Celery
 
 # set the default Django settings module for the 'celery' program.
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'capsl_test.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sample_rbac.settings')
 
-app = Celery('capsl_test')
+app = Celery('sample_rbac')
 
 # Using a string here means the worker doesn't have to serialize
 # the configuration object to child processes.
@@ -19,7 +19,7 @@ def test():
 
 app.conf.beat_schedule = {
     'print-every-30-seconds': {
-        'task': 'capsl_test.celery.test',
+        'task': 'sample_rbac.celery.test',
         'schedule': 30.0,
     },
 }

@@ -4,7 +4,7 @@ from rest_framework.permissions import BasePermission
 from rolepermissions.checkers import has_permission
 
 from boards.models import Board, Thread
-from capsl_test.roles import (
+from sample_rbac.roles import (
     BoardAdmin,
     BoardModerator,
     ThreadAdmin,

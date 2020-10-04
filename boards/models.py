@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from capsl_test.models import BaseModel
+from sample_rbac.models import BaseModel
 
 User = get_user_model()
 

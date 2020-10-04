@@ -1,4 +1,4 @@
-"""capsl_test URL Configuration
+"""sample_rbac URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -55,15 +55,15 @@ urlpatterns = [
     ),
 ]
 
-admin.site.site_header = "capsl"
-admin.site.site_title = "capsl Admin Portal"
-admin.site.index_title = "capsl Admin"
+admin.site.site_header = "Sample RBAC"
+admin.site.site_title = "Sample RBAC Admin Portal"
+admin.site.index_title = "Sample RBAC Admin"
 
 # swagger
 api_info = openapi.Info(
-    title="capsl API",
+    title="Sample RBAC API",
     default_version="v1",
-    description="API documentation for capsl App",
+    description="API documentation for Sample RBAC App",
 )
 
 schema_view = get_schema_view(
